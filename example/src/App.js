@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 
-import ExampleComponent from 'react-lib'
+import { dateToStringDDMMYYYY } from 'react-lib/dist/util';
+import ExampleComponent from 'react-lib';
 
 export default class App extends Component {
   render () {
     return (
       <div>
-        <ExampleComponent text='Modern React component module' />
+        <ExampleComponent text={dateToStringDDMMYYYY(new Date())}/>
       </div>
     )
   }
