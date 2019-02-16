@@ -1,0 +1,40 @@
+{
+  "name": "react-lib",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/lib/index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/parcel src/docs/index.html",
+    "build": "./node_modules/.bin/webpack --mode=production",
+    "build:docs": "./node_modules/.bin/parcel build src/docs/index.js -d dist/docs/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcqueide/react-lib.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mcqueide/react-lib/issues"
+  },
+  "homepage": "https://github.com/mcqueide/react-lib#readme",
+  "devDependencies": {
+    "@babel/core": "^7.3.3",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.0-beta",
+    "parcel-bundler": "^1.11.0",
+    "webpack": "^4.29.4",
+    "webpack-cli": "^3.2.3",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2"
+  },
+  "peerDependencies": {
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2"
+  }
+}
