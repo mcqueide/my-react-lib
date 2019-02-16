@@ -4,7 +4,7 @@ var nodeExternals = require('webpack-node-externals');
 module.exports = {
     entry: path.resolve(__dirname, 'src/lib/index.js'),
     output: {
-        path: path.resolve(__dirname, './build/lib'),
+        path: path.resolve(__dirname, './dist/lib'),
         filename: 'index.js'
     },
     externals: [nodeExternals()],
