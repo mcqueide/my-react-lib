@@ -1,6 +1,10 @@
 {
   "presets": ["@babel/preset-env", "@babel/preset-react"],
-  "plugins": ["babel-plugin-add-module-exports", "@babel/external-helpers"],
+  "plugins": [
+    "babel-plugin-add-module-exports",
+    "@babel/external-helpers",
+    ["@babel/plugin-proposal-optional-chaining", { "loose": false }]
+  ],
   "env": {
     "test": {
       "plugins": [
