@@ -1,22 +1,24 @@
 var path = require('path');
-var nodeExternals = require('webpack-node-externals');
+const pkg = require('./package.json');
 
 module.exports = {
+    mode: 'production',
     entry: path.resolve(__dirname, 'src/lib/index.js'),
+    devtool: 'inline-source-map',
     output: {
         path: path.resolve(__dirname, './dist/lib'),
         filename: 'index.js',
-        library: '',
-        libraryTarget: 'commonjs'
+        library: pkg.name,
+        libraryTarget: 'umd',
+        globalObject: "typeof self !== 'undefined' ? self : this"
     },
-    externals: [nodeExternals()],
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
+                test: /(\.jsx|\.js)$/,
                 exclude: /(node_modules|bower_components)/,
                 loader: 'babel-loader',
-                query: {
+                options: {
                     presets: ['@babel/preset-env', '@babel/preset-react']
                 }
             },
@@ -25,5 +27,9 @@ module.exports = {
                 use: ['style-loader', 'css-loader']
             }
         ]
+    },
+    resolve: {
+        modules: [path.resolve('./node_modules'), path.resolve('./src')],
+        extensions: ['.json', '.js']
     }
 };
