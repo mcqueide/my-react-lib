@@ -1,14 +1,30 @@
-var path = require('path');
+/* global __dirname, require, module*/
+
+const webpack = require('webpack');
+const path = require('path');
+const env = require('yargs').argv.env; // use --env with webpack 2
 const pkg = require('./package.json');
 
+let libraryName = pkg.name;
+
+let outputFile, mode;
+
+if (env === 'build') {
+    mode = 'production';
+    outputFile = 'index.min.js';
+} else {
+    mode = 'development';
+    outputFile = 'index.js';
+}
+
 module.exports = {
-    mode: 'production',
-    entry: path.resolve(__dirname, 'src/lib/index.js'),
+    mode: mode,
+    entry: path.resolve(__dirname, 'src/index.js'),
     devtool: 'inline-source-map',
     output: {
-        path: path.resolve(__dirname, './dist/lib'),
-        filename: 'index.js',
-        library: pkg.name,
+        path: path.resolve(__dirname, '/lib'),
+        filename: outputFile,
+        library: libraryName,
         libraryTarget: 'umd',
         globalObject: "typeof self !== 'undefined' ? self : this"
     },
@@ -17,14 +33,7 @@ module.exports = {
             {
                 test: /(\.jsx|\.js)$/,
                 exclude: /(node_modules|bower_components)/,
-                loader: 'babel-loader',
-                options: {
-                    presets: ['@babel/preset-env', '@babel/preset-react']
-                }
-            },
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
+                loader: 'babel-loader'
             }
         ]
     },
