@@ -1,0 +1,1 @@
+export const utilFunction = () => 'make a great thing';

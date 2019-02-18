@@ -19,11 +19,14 @@ if (env === 'build') {
 
 module.exports = {
     mode: mode,
-    entry: path.resolve(__dirname, 'src/index.js'),
+    entry: {
+        'dist/components/bundle' : path.resolve(__dirname, 'src/components/index.js'),
+        'dist/util/bundle' : path.resolve(__dirname, 'src/util/index.js')
+    },
     devtool: 'inline-source-map',
     output: {
-        path: path.resolve(__dirname, '/lib'),
-        filename: outputFile,
+        path: path.resolve(__dirname, './'),
+        filename: '[name].js',
         library: libraryName,
         libraryTarget: 'umd',
         globalObject: "typeof self !== 'undefined' ? self : this"
