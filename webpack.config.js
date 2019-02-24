@@ -41,7 +41,10 @@ module.exports = {
         ]
     },
     resolve: {
-        modules: [path.resolve('./node_modules'), path.resolve('./src')],
+        modules: [path.resolve('./node_modules'),
+            path.resolve('./src/components'),
+            path.resolve('./src/util'),
+        ],
         extensions: ['.json', '.js']
     }
 };
